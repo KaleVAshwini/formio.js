@@ -13,7 +13,7 @@ if (typeof window !== 'undefined') {
 export default class SelectComponent extends Field {
   static schema(...extend) {
     return Field.schema({
-      type: 'select',
+      type: 'selectF',
       label: 'Select',
       key: 'select',
       idPath: 'id',

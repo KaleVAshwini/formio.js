@@ -433,10 +433,10 @@ export default class WebformBuilder extends Component {
         title: 'Data',
         weight: 30
       },
-      premium: {
-        title: 'Premium',
-        weight: 40
-      },
+    // premium: {
+      //   title: 'Premium',
+      //   weight: 40
+      // },
     };
   }
 
@@ -499,14 +499,45 @@ export default class WebformBuilder extends Component {
     // Anything else, keep going up.
     return this.recurseNamespace(component.parent);
   }
-
+  geFilteredBasic(basicGroups) {
+    // this is to give the custom order remember to improve the performance we know the components those are fixed and wont change dynamically.
+    basicGroups.componentOrder = [
+      basicGroups.componentOrder[6],
+      basicGroups.componentOrder[8],
+      basicGroups.componentOrder[3],
+      basicGroups.componentOrder[4],
+      basicGroups.componentOrder[7],
+      basicGroups.componentOrder[1],
+      basicGroups.componentOrder[0],
+      basicGroups.componentOrder[2],
+      basicGroups.componentOrder[5],
+      basicGroups.componentOrder[11],
+      basicGroups.componentOrder[9],
+      basicGroups.componentOrder[10],
+      basicGroups.componentOrder[12],
+    ];
+  }
   render() {
+      /**
+     * @author darshan
+     * rearranging groups based on tabs
+     */
+    this.basicGroups = [this.groupOrder[4], this.groupOrder[3], this.groupOrder[5]];
+    this.geFilteredBasic(this.groups[this.basicGroups[0]]);
+    this.customGroups = [this.groupOrder[0], this.groupOrder[1], this.groupOrder[2]];
+    this.otherGroups = [this.groupOrder[6]];
+    this.groups[this.customGroups[0]].default = true;
+    this.groups[this.otherGroups[0]].default = true;
+    
     return this.renderTemplate('builder', {
       sidebar: this.renderTemplate('builderSidebar', {
         scrollEnabled: this.sideBarScroll,
         groupOrder: this.groupOrder,
         groupId: `builder-sidebar-${this.id}`,
-        groups: this.groupOrder.map((groupKey) => this.renderTemplate('builderSidebarGroup', {
+        groupTabs: this.renderTemplate('builderSidebarTab', {
+          tab:1
+        }),
+        groups: this.basicGroups.map((groupKey) => this.renderTemplate('builderSidebarGroup', {
           group: this.groups[groupKey],
           groupKey,
           groupId: `builder-sidebar-${this.id}`,
@@ -536,6 +567,10 @@ export default class WebformBuilder extends Component {
         'sidebar-anchor': 'multiple',
         'sidebar-group': 'multiple',
         'sidebar-container': 'multiple',
+        'basicTab': 'single',
+        'customTab': 'single',
+        'othersTab': 'single',
+        'builder-sidebar-tabs': 'single'
       });
 
       if (this.sideBarScroll && Templates.current.handleBuilderSidebarScroll) {
@@ -578,13 +613,19 @@ export default class WebformBuilder extends Component {
           }, true);
         });
       }
-
-      this.addEventListener(this.refs['sidebar-search'], 'input',
-        _.debounce((e) => {
-          const searchString = e.target.value;
-          this.searchFields(searchString);
-        }, 300)
-      );
+      this.addEventListener(this.refs['sidebar-search'], 'input', (e) => {
+        const searchString = e.target.value;
+          this.searchFields(searchString, 'basicGroups');
+        });
+        this.addEventListener(this.refs['basicTab'], 'click',()=> {
+          this.searchFields(null, 'basicGroups', 1);
+        });
+        this.addEventListener(this.refs['customTab'], 'click',()=> {
+          this.searchFields(null, 'customGroups', 2);
+        });
+        this.addEventListener(this.refs['othersTab'], 'click',()=> {
+          this.searchFields(null, 'otherGroups', 3);
+        });
 
       if (this.dragDropEnabled) {
         this.initDragula();
@@ -596,8 +637,8 @@ export default class WebformBuilder extends Component {
     });
   }
 
-  searchFields(searchString = '') {
-    const searchValue = searchString.toLowerCase();
+  searchFields(searchString, groupName,tab=1) {
+    searchString = searchString?.toLowerCase();
     const sidebar = this.refs['sidebar'];
     const sidebarGroups = this.refs['sidebar-groups'];
 

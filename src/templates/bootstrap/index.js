@@ -58,6 +58,7 @@ import wizardNav from './wizardNav';
 import cssClasses from './cssClasses';
 import errorsList from './errorsList';
 import alert from './alert';
+import builderSidebarTab from './builderSidebarTab';
 
 export default {
   transform(type, text) {
@@ -129,6 +130,7 @@ export default {
   wizard,
   wizardHeader,
   wizardNav,
+  builderSidebarTab,
   errorsList,
   alert
 };

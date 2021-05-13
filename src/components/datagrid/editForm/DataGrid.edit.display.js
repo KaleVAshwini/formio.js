@@ -52,7 +52,7 @@ export default [
     }
   },
   {
-    type: 'select',
+    type: 'selectF',
     label: 'Add Another Position',
     key: 'addAnotherPosition',
     dataSrc: 'values',
@@ -71,13 +71,13 @@ export default [
       return !context.data.disableAddingRemovingRows;
     }
   },
-  {
-    type: 'checkbox',
-    label: 'Equal column width',
-    key: 'layoutFixed',
-    weight: 430,
-    input: true,
-  },
+  // {
+  //   type: 'checkbox',
+  //   label: 'Equal column width',
+  //   key: 'layoutFixed',
+  //   weight: 430,
+  //   input: true,
+  // },
   {
     key: 'enableRowGroups',
     type: 'checkbox',
