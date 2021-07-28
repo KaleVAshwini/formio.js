@@ -110,13 +110,7 @@ export default class TextAreaComponent extends TextFieldComponent {
   }
 
   attachElement(element, index) {
-    if (this.component.width) {
-      const pxVal = ((this.component.width/100)*window.screen.width)-60;
-      this.component.attributes = {
-        ...this.component.attributes,
-        style: `min-width:${pxVal}px`
-      };
-    }
+ 
     if (this.autoExpand && (this.isPlain || this.options.readOnly || this.options.htmlView)) {
       if (element.nodeName === 'TEXTAREA') {
         this.addAutoExpanding(element, index);

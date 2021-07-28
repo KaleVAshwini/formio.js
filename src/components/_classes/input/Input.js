@@ -127,11 +127,7 @@ export default class Input extends Multivalue {
     if (this.isMultipleMasksField) {
       info.attr.class += ' formio-multiple-mask-input';
     }
-     if (value && (typeof value === 'string' || typeof value === 'number')) {
-      const valueStr= `${value}`;
-      const minWidth = (valueStr?.length  + 1) * 9.1 + 20;
-      info.attr.style=`min-width:${minWidth}px;`;
-    }
+    
     return this.isMultipleMasksField
       ? this.renderTemplate('multipleMasksInput', {
         input: info,
@@ -188,10 +184,7 @@ export default class Input extends Multivalue {
     const input = this.performInputMapping(this.refs.input[index]);
 
     if (input && input.widget) {
-      if (input.nodeName === 'INPUT') {
-        const value = (input.widget.getValue().length  + 1) * 8.1 + 20;
-        input.style.minWidth = `${value}px`;
-      }
+      
       return input.widget.getValue();
     }
     return input ? input.value : undefined;
