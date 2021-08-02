@@ -23,7 +23,6 @@ export default [
     tooltip: 'This allows control over how many rows are visible in the text area.',
     placeholder: 'Enter the amount of rows'
   },
-  
   {
     weight: 1350,
     type: 'checkbox',

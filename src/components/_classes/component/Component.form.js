@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
-import ComponentEditConditional from './editForm/Component.edit.conditional';
+//import ComponentEditConditional from './editForm/Component.edit.conditional';
 import ComponentEditData from './editForm/Component.edit.data';
 import ComponentEditAPI from './editForm/Component.edit.api';
 import ComponentEditDisplay from './editForm/Component.edit.display';
-import ComponentEditLogic from './editForm/Component.edit.logic';
+//import ComponentEditLogic from './editForm/Component.edit.logic';
 import ComponentEditValidation from './editForm/Component.edit.validation';
 // import ComponentEditLayout from './editForm/Component.edit.layout';
 import EditFormUtils from './editForm/utils';

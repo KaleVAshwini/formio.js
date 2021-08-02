@@ -2583,7 +2583,7 @@ export default class Component extends Element {
    * @param dirty
    * @return {boolean}
    */
-  isValid(data, dirty) {
+  isValid(data) {
     return !this.invalidMessage(data, true);
   }
 

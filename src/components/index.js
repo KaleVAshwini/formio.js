@@ -32,7 +32,7 @@ import ReCaptchaComponent from './recaptcha/ReCaptcha';
 import ResourceComponent from './resource/Resource';
 import SelectBoxesComponent from './selectboxes/SelectBoxes';
 import SelectComponent from './select/Select';
-import SignatureComponent from './signature/Signature';
+//import SignatureComponent from './signature/Signature';
 // import SurveyComponent from './survey/Survey';
 import TableComponent from './table/Table';
 import TabsComponent from './tabs/Tabs';
