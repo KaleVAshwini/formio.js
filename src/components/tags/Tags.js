@@ -9,7 +9,10 @@ export default class TagsComponent extends Input {
       key: 'tags',
       delimeter: ',',
       storeas: 'string',
-      maxTags: 0
+      maxTags: 0,
+      errors: {
+        required: ' ',
+      },
     }, ...extend);
   }
 
