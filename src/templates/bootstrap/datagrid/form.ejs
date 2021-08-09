@@ -8,8 +8,8 @@
     <tr>
       {% if (ctx.component.reorder) { %}<th></th>{% } %}
       {% ctx.columns.forEach(function(col, index) { %}
-        <th class="{{col.validate && col.validate.required ? 'field-required' : ''}}">
-          <div id="{{ctx.component.key}}{{index}}" style="overflow: auto; resize: horizontal; width: {{ctx.component.widthOffsets[ctx.component.key + index] && ctx.component.widthOffsets[ctx.component.key + index].includes('px') ? ctx.component.widthOffsets[ctx.component.key + index] : ((ctx.component.widthOffsets[ctx.component.key + index] / 100) * window.screen.width) +'px'}};">
+        <th>
+          <div  class="{{col.validate && col.validate.required ? 'field-required' : ''}}" id="{{ctx.component.key}}{{index}}" style="overflow: auto; resize: horizontal; width: {{ctx.component.widthOffsets[ctx.component.key + index] && ctx.component.widthOffsets[ctx.component.key + index].includes('px') ? ctx.component.widthOffsets[ctx.component.key + index] : ((ctx.component.widthOffsets[ctx.component.key + index] / 100) * window.screen.width) +'px'}};">
           {{ col.hideLabel ? '' : ctx.t(col.label || col.title) }}
           {% if (col.tooltip) { %} <i ref="tooltip" data-title="{{col.tooltip}}" class="{{ctx.iconClass('question-sign')}} text-muted"></i>{% } %}
         </div>
