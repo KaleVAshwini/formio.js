@@ -233,7 +233,7 @@ export default class WebformBuilder extends Component {
         copyComponent: 'single',
         pasteComponent: 'single',
         editJson: 'single',
-        component: 'single'
+        element: 'single'
       });
 
       if (component.refs.copyComponent) {
@@ -279,7 +279,7 @@ export default class WebformBuilder extends Component {
 
         component.addEventListener(component.refs.editComponent, 'click', () =>
           this.editComponent(component.schema, parent, false, false, component.component));
-          component.addEventListener(component.refs.component, 'click', () =>
+          component.addEventListener(component.refs.element, 'click', () =>
           this.editComponent(component.schema, parent, false, false, component.component));
       }
       if (component.refs.editJson) {
