@@ -233,7 +233,7 @@ export default class WebformBuilder extends Component {
         copyComponent: 'single',
         pasteComponent: 'single',
         editJson: 'single',
-        element: 'single'
+        component: 'single'
       });
 
       if (component.refs.copyComponent) {
@@ -279,8 +279,9 @@ export default class WebformBuilder extends Component {
 
         component.addEventListener(component.refs.editComponent, 'click', () =>
           this.editComponent(component.schema, parent, false, false, component.component));
-          component.addEventListener(component.refs.element, 'click', () =>
-          this.editComponent(component.schema, parent, false, false, component.component));
+        component.addEventListener(component.refs.component, 'click', (event) =>{
+          event.stopPropagation();
+          this.editComponent(component.schema, parent, false, false, component.component)});
       }
       if (component.refs.editJson) {
         new Tooltip(component.refs.editJson, {
