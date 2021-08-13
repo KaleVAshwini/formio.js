@@ -281,7 +281,8 @@ export default class WebformBuilder extends Component {
           this.editComponent(component.schema, parent, false, false, component.component));
         component.addEventListener(component.refs.component, 'click', (event) =>{
           event.stopPropagation();
-          this.editComponent(component.schema, parent, false, false, component.component)});
+          this.editComponent(component.schema, parent, false, false, component.component);
+        });
       }
       if (component.refs.editJson) {
         new Tooltip(component.refs.editJson, {
