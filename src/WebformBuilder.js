@@ -243,8 +243,10 @@ export default class WebformBuilder extends Component {
           title: this.t('Copy')
         });
 
-        component.addEventListener(component.refs.copyComponent, 'click', () =>
-          this.copyComponent(component));
+        component.addEventListener(component.refs.copyComponent, 'click', (event) =>{
+          event.stopPropagation();
+          this.copyComponent(component);
+        });
       }
 
       if (component.refs.pasteComponent) {
@@ -254,7 +256,8 @@ export default class WebformBuilder extends Component {
           title: this.t('Paste below')
         });
 
-        component.addEventListener(component.refs.pasteComponent, 'click', () => {
+        component.addEventListener(component.refs.pasteComponent, 'click', (event) => {
+          event.stopPropagation();
           pasteToolTip.hide();
           this.pasteComponent(component);
         });
@@ -277,11 +280,14 @@ export default class WebformBuilder extends Component {
           title: this.t('Edit')
         });
 
-        component.addEventListener(component.refs.editComponent, 'click', () =>
-          this.editComponent(component.schema, parent, false, false, component.component));
+        component.addEventListener(component.refs.editComponent, 'click', (event)=>{
+          event.stopPropagation();
+          return this.editComponent(component.schema, parent, false, false, component.component);
+        });
+
         component.addEventListener(component.refs.component, 'click', (event) =>{
           event.stopPropagation();
-          this.editComponent(component.schema, parent, false, false, component.component);
+          return this.editComponent(component.schema, parent, false, false, component.component);
         });
       }
       if (component.refs.editJson) {
@@ -291,8 +297,11 @@ export default class WebformBuilder extends Component {
           title: this.t('Edit JSON')
         });
 
-        component.addEventListener(component.refs.editJson, 'click', () =>
-          this.editComponent(component.schema, parent, false, true, component.component));
+        component.addEventListener(component.refs.editJson, 'click', (event) =>{
+          event.stopPropagation();
+          this.editComponent(component.schema, parent, false, true, component.component)
+        ;
+        });
       }
 
       if (component.refs.removeComponent) {
@@ -302,8 +311,11 @@ export default class WebformBuilder extends Component {
           title: this.t('Remove')
         });
 
-        component.addEventListener(component.refs.removeComponent, 'click', () =>
-          this.removeComponent(component.schema, parent, component.component));
+        component.addEventListener(component.refs.removeComponent, 'click', (event) =>{
+          event.stopPropagation();
+          this.removeComponent(component.schema, parent, component.component);
+        }
+          );
       }
 
       return element;
