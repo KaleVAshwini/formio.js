@@ -96,6 +96,7 @@ export default class TabsComponent extends NestedComponent {
     this.refs[this.tabLinkKey].forEach((tabLink, index) => {
       this.addEventListener(tabLink, 'click', (event) => {
         event.preventDefault();
+        event.stopPropagation();
         this.setTab(index);
       });
     });
