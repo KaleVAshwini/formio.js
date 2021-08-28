@@ -14,9 +14,9 @@ export default class SelectBoxesComponent extends RadioComponent {
   static get builderInfo() {
     return {
       title: 'Select Boxes',
-      group: 'basic',
+      group: 'customFuctions',
       icon: 'plus-square',
-      weight: 60,
+      weight: 20,
       documentation: 'http://help.form.io/userguide/#selectboxes',
       schema: SelectBoxesComponent.schema()
     };

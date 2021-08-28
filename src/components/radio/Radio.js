@@ -19,9 +19,9 @@ export default class RadioComponent extends Field {
   static get builderInfo() {
     return {
       title: 'Radio',
-      group: 'basic',
+      group: 'customFuctions',
       icon: 'dot-circle-o',
-      weight: 80,
+      weight: 50,
       documentation: 'http://help.form.io/userguide/#radio',
       schema: RadioComponent.schema()
     };

@@ -30,7 +30,7 @@ export default class TextAreaComponent extends TextFieldComponent {
       group: 'basic',
       icon: 'font',
       documentation: 'http://help.form.io/userguide/#textarea',
-      weight: 20,
+      weight: 50,
       schema: TextAreaComponent.schema()
     };
   }
