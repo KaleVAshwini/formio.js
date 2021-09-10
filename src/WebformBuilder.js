@@ -897,13 +897,15 @@ export default class WebformBuilder extends Component {
     if (!info) {
       return;
     }
+    const parent = target.formioComponent;
+    if (parent.type === 'datagrid') {
+      info.key +=  parent?.component?.key;
+    }
 
     if (target !== source) {
       // Ensure the key remains unique in its new container.
       BuilderUtils.uniquify(this.findNamespaceRoot(target.formioComponent.component), info);
     }
-
-    const parent = target.formioComponent;
 
     // Insert in the new container.
     if (target.formioContainer) {
